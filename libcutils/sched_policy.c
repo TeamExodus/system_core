@@ -58,7 +58,8 @@ static pthread_once_t cpuset_once = PTHREAD_ONCE_INIT;
 
 static int __sys_supports_schedgroups = -1;
 static int __sys_supports_cpusets = -1;
-static char proc_name[32] = {0};
+static int proc_name_length = 32;
+static char proc_name[proc_name_length] = {0};
 
 // File descriptors open to /dev/cpuctl/../tasks, setup by initialize, or -1 on error.
 static int bg_cgroup_fd = -1;
@@ -135,7 +136,7 @@ static void __initialize(void) {
     int pfd;
     int ptid = gettid();
 
-    snprintf(proc_name, sizeof(proc_name), "/proc/%d/cmdline", ptid);
+    snprintf(proc_name, proc_name_length, "/proc/%d/cmdline", ptid);
 
     pfd = open(proc_name, O_RDONLY);
     memset(proc_name, 0, sizeof(proc_name));
