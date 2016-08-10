@@ -43,9 +43,9 @@ static void format_time(int time, char* buffer) {
     int days = time / 24;
 
     if (days > 0) {
-        sprintf(buffer, "%d day%s, %02d:%02d:%02d", days, (days == 1) ? "" : "s", hours, minutes, seconds);
+        snprintf(buffer, sizeof(*buffer), "%d day%s, %02d:%02d:%02d", days, (days == 1) ? "" : "s", hours, minutes, seconds);
     } else {
-        sprintf(buffer, "%02d:%02d:%02d", hours, minutes, seconds);
+        snprintf(buffer, sizeof(*buffer), "%02d:%02d:%02d", hours, minutes, seconds);
     }
 }
 
