@@ -32,6 +32,7 @@ struct fs_mgr_flag_values {
     int partnum;
     int swap_prio;
     unsigned int zram_size;
+    unsigned int file_encryption_mode;
     unsigned int zram_streams;
 };
 
@@ -78,6 +79,7 @@ static struct flag_list fs_mgr_flags[] = {
     { "formattable", MF_FORMATTABLE },
     { "slotselect",  MF_SLOTSELECT },
     { "nofail",      MF_NOFAIL },
+    { "latemount",   MF_LATEMOUNT },
     { "zramstreams=",MF_ZRAMSTREAMS },
     { "defaults",    0 },
     { 0,             0 },
@@ -366,6 +368,7 @@ struct fstab *fs_mgr_read_fstab(const char *fstab_path)
         fstab->recs[cnt].partnum = flag_vals.partnum;
         fstab->recs[cnt].swap_prio = flag_vals.swap_prio;
         fstab->recs[cnt].zram_size = flag_vals.zram_size;
+        fstab->recs[cnt].file_encryption_mode = flag_vals.file_encryption_mode;
         fstab->recs[cnt].zram_streams = flag_vals.zram_streams;
         cnt++;
     }
