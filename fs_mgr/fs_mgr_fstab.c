@@ -73,6 +73,7 @@ static struct flag_list fs_mgr_flags[] = {
     { "recoveryonly",MF_RECOVERYONLY },
     { "swapprio=",   MF_SWAPPRIO },
     { "zramsize=",   MF_ZRAMSIZE },
+    { "verifyatboot", MF_VERIFYATBOOT },
     { "verify",      MF_VERIFY },
     { "noemulatedsd", MF_NOEMULATEDSD },
     { "notrim",       MF_NOTRIM },
@@ -81,6 +82,7 @@ static struct flag_list fs_mgr_flags[] = {
     { "nofail",      MF_NOFAIL },
     { "latemount",   MF_LATEMOUNT },
     { "zramstreams=",MF_ZRAMSTREAMS },
+    { "crashcheck",   MF_CRASHCHECK },
     { "defaults",    0 },
     { 0,             0 },
 };
